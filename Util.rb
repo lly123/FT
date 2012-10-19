@@ -1,4 +1,4 @@
-require "./List"
+require "./Two"
 
 alias L lambda
 
