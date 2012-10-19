@@ -1,8 +1,18 @@
-require "./Pair"
-require "./Y"
-require "./Util"
-
 alias L lambda
+
+$_C = L{|x| L{|y| L{|f| f[x][y]}}}
+$_Car = L{|p| p[L{|x| L{|y| x}}]}
+$_Cdr = L{|p| p[L{|x| L{|y| y}}]}
+
+$_IF = L{|b| L{|m| L{|n| b[$_C[m][n]]}}}
+$_TRUE = $_Car
+$_FALSE = $_Cdr
+
+_Y = L{|f| L{|g|
+  u = L{|x| f[ L{|g| x[x][g]} ]}
+  u[u][g]}}
+
+$_Y = _Y
 
 # --------- 1 ---------
 
