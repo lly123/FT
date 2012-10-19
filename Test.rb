@@ -1,6 +1,11 @@
 require "./Two"
 require "./Util"
 
+sum = L{|n, f| if n == 1 then f[1] else sum[n-1, L{|v| f[n + v] }] end}
+sum[100, L{|v| p v}]
+
+p "--------"
+
 $_Print0[$_0Sub[$_02][$_03]]
 $_Print0[$_0Mul[$_01][$_03]]
 
@@ -22,3 +27,11 @@ $_PrintList[list][0]
 p "--------"
 list = $_LIST_SUB[list][$_1][$_FALSE]
 $_PrintList[list][0]
+
+p "--------"
+list = $_LIST[$_TAIL[$_1]][$_2][$_5][$_HEAD]
+list = $_LIST_MAP[list][ L{|v| $_Add1[v]} ]
+$_PrintList[list][0]
+
+p "--------"
+$_Print[$_LIST_IDX[list][L{|v| $_EQ[v][$_3]}]][0]
