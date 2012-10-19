@@ -1,4 +1,4 @@
-require "./Two"
+require "./_2"
 
 alias L lambda
 

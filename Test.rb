@@ -1,4 +1,3 @@
-require "./Two"
 require "./Util"
 
 sum = L{|n, f| if n == 1 then f[1] else sum[n-1, L{|v| f[n + v] }] end}
