@@ -1,17 +1,17 @@
 require "./List"
 require "./Util"
 
-$_Print0[$_Sub[$_2][$_3]]
-$_Print0[$_Mul[$_1][$_3]]
+$_Print0[$_0Sub[$_02][$_03]]
+$_Print0[$_0Mul[$_01][$_03]]
 
-$_Print0[ $_IF[$_TRUE][$_0][$_1] ]
-$_Print0[ $_IF[ $_GT[$_2][$_2] ][ $_1 ][ $_0 ] ]
+$_Print0[ $_0IF[$_0TRUE][$_00][$_01] ]
+$_Print0[ $_0IF[ $_0GT[$_02][$_02] ][ $_01 ][ $_00 ] ]
 
 p "====="
 
-#$_Print0[ $_LEN[ $_P[$_3][$_P[$_2][$_P[$_1][$_NULL]]] ] ]
-#$_Print0[ $_LEN[ $_LIST[$_P[$_1][$_NULL]][$_NUM[$_2]][$_NUM[$_1]][$_NULL] ] ]
+#$_Print0[ $_LEN[ $_P[$_03][$_P[$_02][$_P[$_01][$_NULL]]] ] ]
+#$_Print0[ $_LEN[ $_LIST[$_P[$_01][$_NULL]][$_NUM[$_02]][$_NUM[$_01]][$_NULL] ] ]
 
-#$_PrintList[ $_P[$_NUM[$_3]][$_P[$_NUM[$_3]][$_TAIL[$_NUM[$_1]]]] ]
-$_PrintList[ $_LIST[$_TAIL[$_NUM[$_1]]][$_NUM[$_3]][$_NUM[$_2]][$_HEAD] ]
+#$_PrintList[ $_P[$_NUM[$_03]][$_P[$_NUM[$_03]][$_TAIL[$_NUM[$_01]]]] ]
+$_PrintList[ $_LIST[$_TAIL[$_NUM[$_01]]][$_NUM[$_03]][$_NUM[$_02]][$_HEAD] ]
 
