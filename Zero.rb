@@ -46,9 +46,9 @@ $_0Mul = $_Y[_Mul0]
 
 # --------- 4 ---------
 
-$_0AND = L{|x| L{|y| $_0IF[x][ $_0IF[y][$_0TRUE][$_0FALSE] ][$_0FALSE] }}
-$_0OR = L{|x| L{|y| $_0IF[x][ $_0TRUE ][ $_0IF[y][$_0TRUE][$_0FALSE] ] }}
-$_0NOT = L{|x| $_0IF[x][$_0FALSE][$_0TRUE] }
+$_0AND = L{|x| L{|y| $_0IF[x][$_0IF[y][$_0TRUE][$_0FALSE]][$_0FALSE]}}
+$_0OR = L{|x| L{|y| $_0IF[x][$_0TRUE][$_0IF[y][$_0TRUE][$_0FALSE]]}}
+$_0NOT = L{|x| $_0IF[x][$_0FALSE][$_0TRUE]}
 
 _CMP0 = L{|s| L{|n| L{|m|
   $_0IF[$_0AND[_IsZero[n]][_IsZero[m]]][$_00][
