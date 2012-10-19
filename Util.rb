@@ -13,5 +13,5 @@ $_Print = L{|n|
   ]
 }
 
-$_PrintList = L{|l| if $_Car[l][L{|x| x + 1}][0] > 0 then $_Print[$_PA[l]][0]; $_PrintList[$_PD[l]] end }
+$_PrintList = L{|l| if $_Car[l][L{|x| x + 1}][0] > 0 then $_Print[$_FST[l]][0]; $_PrintList[$_SND[l]] end }
 
