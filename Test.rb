@@ -34,3 +34,15 @@ $_PrintList[list][0]
 
 p "--------"
 $_Print[$_LIST_IDX[list][L{|v| $_EQ[v][$_3]}]][0]
+
+p "--------"
+s1 = $_STR[$_LIST[$_TAIL[$_A_]][$_B_][$_C_][$_HEAD]]
+s2 = $_STR[$_LIST[$_TAIL[$_A_]][$_B_][$_C_][$_HEAD]]
+$_Print[ $_STR_EQ[s1][s2] ][0]
+
+p "--------"
+_VAL = L{|n| $_0Cdr[n]}
+_BOOL = L{|n| $_0C[$_03][n]}
+#$_Print[$_IF[$_AND[$_IsCHAR[$_A_]][$_IsCHAR[$_A_]]][ _BOOL[$_0EQ[_VAL[$_A_]][_VAL[$_A_]]] ][$_NULL]]
+#$_Print[$_CHAR_EQ[$_A_][$_A_]][0]
+$_Print[ $_CHAR_EQ[$_Z_][$_Z_] ][0]

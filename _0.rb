@@ -46,7 +46,7 @@ $_0Sub1 = L{|n| L{|f| L{|x|
 _Sub0 = L{|s| L{|n| L{|m| $_0IF[_IsZero[m]][n][ L{|g| s[$_0Sub1[n]][$_0Sub1[m]][g]} ]}}}
 $_0Sub = $_Y[_Sub0]
 
-_Mul0 = L{|s| L{|n| L{|m| $_0IF[_IsZero[m]][$_00][ L{|g| $_0Add[n][ s[n][$_0Sub1[m]] ][g] } ]}}}
+_Mul0 = L{|s| L{|n| L{|m| $_0IF[_IsZero[m]][$_00][ L{|g| $_0Add[n][  s[n][$_0Sub1[m]]  ][g] } ]}}}
 $_0Mul = $_Y[_Mul0]
 
 # ---------------------

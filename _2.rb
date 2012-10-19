@@ -1,5 +1,7 @@
 require "./_1"
 
+_VAL = L{|n| $_0Cdr[n]}
+
 # --------- 5 ---------
 
 _LEN0 = L{|s| L{|l| $_IF[$_IsNULL[l]][$_0][ L{|g| $_Add1[s[$_SND[l]]][g]} ]}}
@@ -36,3 +38,19 @@ _LIST_IDX0 = L{|s| L{|l| L{|n| L{|f|
 }}}}
 _LIST_IDX1 = $_Y[_LIST_IDX0]
 $_LIST_IDX = L{|l| L{|f| _LIST_IDX1[l][$_Sub1[$_LEN[l]]][f] }}
+
+_LIST_CMP0 = L{|s| L{|n| L{|m| L{|f|
+  $_IF[$_OR[$_IsNULL[n]][$_IsNULL[n]]][
+      $_IF[$_AND[$_IsNULL[n]][$_IsNULL[n]]][$_TRUE][$_FALSE]
+  ][
+      $_IF[f[$_FST[n]][$_FST[m]]][ L{|g| s[$_SND[n]][$_SND[m]][f][g]} ][$_FALSE]
+  ]
+}}}}
+$_LIST_CMP = $_Y[_LIST_CMP0]
+
+# >> TYPE 5 : STRING
+$_STR = L{|n| $_0C[$_05][n]}
+
+$_STR_EQ = L{|n| L{|m|
+  $_LIST_CMP[_VAL[n]][_VAL[m]][L{|x| L{|y| $_CHAR_EQ[x][y] }}]
+}}
