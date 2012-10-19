@@ -1,4 +1,3 @@
-require "./Pair"
 require "./List"
 
 alias L lambda

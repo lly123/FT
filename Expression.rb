@@ -1,4 +1,4 @@
-require "./Number"
+require "./Zero"
 
 $_TYPE_OF = L{|n| $_Car[n]}
 
@@ -8,6 +8,8 @@ $_IsNULL = L{|n| $_IF[$_EQ[$_Car[n]][$_0]][$_TRUE][$_FALSE]}
 
 # >> TYPE 2 : Number
 $_NUM = L{|n| $_C[$_2][n]}
+
+
 
 # >> TYPE 1 : TUPLE
 $_T = L{|n| L{|m| $_C[$_1][$_C[n][m]]}}
