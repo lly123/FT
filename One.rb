@@ -16,12 +16,8 @@ _BOTH_NUM = L{|n| L{|m| $_AND[$_IsNUM[n]][$_IsNUM[m]]}}
 
 $_Add1 = L{|n| $_IF[$_IsNUM[n]][$_NUM[$_0Add1[_VAL[n]]]][$_NULL] }
 $_Add = L{|n| L{|m| $_IF[_BOTH_NUM[n][m]][$_NUM[$_0Add[_VAL[n]][_VAL[m]]]][$_NULL]}}
-
-$_EQ = L{|n| L{|m| $_IF[_BOTH_NUM[n][m]][$_0EQ[_VAL[n]][_VAL[m]]][$_NULL]}}
-$_LT = L{|n| L{|m| $_IF[_BOTH_NUM[n][m]][$_0LT[_VAL[n]][_VAL[m]]][$_NULL]}}
-$_GT = L{|n| L{|m| $_IF[_BOTH_NUM[n][m]][$_0GT[_VAL[n]][_VAL[m]]][$_NULL]}}
-
-$_IsZero = L{|n| $_EQ[n][$_0]}
+$_Sub1 = L{|n| $_IF[$_IsNUM[n]][$_NUM[$_0Sub1[_VAL[n]]]][$_NULL] }
+$_Sub = L{|n| L{|m| $_IF[_BOTH_NUM[n][m]][$_NUM[$_0Sub[_VAL[n]][_VAL[m]]]][$_NULL]}}
 
 # >> Type 3 : Boolean
 _BOOL = L{|n| $_0C[$_03][n]}
@@ -34,6 +30,14 @@ $_IF = L{|b| L{|m| L{|n| $_0IF[_IsBOOL[b]][$_0IF[_VAL[b]][m][n]][$_NULL]}}}
 $_AND = L{|x| L{|y| $_0IF[$_0AND[_IsBOOL[x]][_IsBOOL[y]]][_BOOL[$_0AND[_VAL[x]][_VAL[y]]]][$_NULL]}}
 $_OR = L{|x| L{|y| $_0IF[$_0AND[_IsBOOL[x]][_IsBOOL[y]]][_BOOL[$_0OR[_VAL[x]][_VAL[y]]]][$_NULL]}}
 $_NOT = L{|x| $_0IF[_IsBOOL[x]][_BOOL[$_0NOT[_VAL[x]]]][$_NULL]}
+
+$_IsBOOL = L{|x| $_0IF[_IsBOOL[x]][$_TRUE][$_FALSE]}
+
+$_EQ = L{|n| L{|m| $_IF[_BOTH_NUM[n][m]][_BOOL[$_0EQ[_VAL[n]][_VAL[m]]]][$_NULL]}}
+$_LT = L{|n| L{|m| $_IF[_BOTH_NUM[n][m]][_BOOL[$_0LT[_VAL[n]][_VAL[m]]]][$_NULL]}}
+$_GT = L{|n| L{|m| $_IF[_BOTH_NUM[n][m]][_BOOL[$_0GT[_VAL[n]][_VAL[m]]]][$_NULL]}}
+
+$_IsZero = L{|n| $_EQ[n][$_0]}
 
 # >> TYPE 1 : TUPLE
 $_T = L{|n| L{|m| $_0C[$_01][$_0C[n][m]]}}

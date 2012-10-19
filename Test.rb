@@ -15,6 +15,11 @@ $_Print[ $_LEN[$_LIST[$_TAIL[$_1]][$_2][$_HEAD]] ]
 
 p "--------"
 
-$_PrintList[ $_LIST[$_TAIL[$_1]][$_3][$_5][$_HEAD] ]
+list = $_LIST[$_TAIL[$_2]][$_3][$_5][$_HEAD]
+#$_PrintList[list]
+$_Print[$_IsZero[$_0]][0]
+
+$_Print[$_FST[list]][0]
+$_Print[$_LIST_AT[list][$_2]][0]
 #$_Print[ $_Add[$_1][$_5] ]
 

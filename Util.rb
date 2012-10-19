@@ -5,9 +5,11 @@ alias L lambda
 $_Print0 = L{|n| p n[L{|x| x + 1}][0]}
 
 $_Print = L{|n|
-  $_IF[$_IsNULL[n]][L{|x| p 'NULL'}][
-      $_IF[$_IsTUPLE[n]][L{|x| p 'TUPLE'}][
-          $_IF[$_IsNUM[n]][ $_Print0[$_0Cdr[n]] ][L{|x| }]
+  $_IF[$_IsBOOL[n]][$_IF[n][L{|x| p 'TRUE'}][L{|x| p 'FALSE'}]][
+      $_IF[$_IsNULL[n]][L{|x| p 'NULL'}][
+          $_IF[$_IsTUPLE[n]][L{|x| p 'TUPLE'}][
+              $_IF[$_IsNUM[n]][ L{|g| $_Print0[$_0Cdr[n]][g]} ][L{|x| }]
+          ]
       ]
   ]
 }
