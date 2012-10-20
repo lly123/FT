@@ -59,3 +59,17 @@ p "-------->>"
 
 #l = $_LET[v][$_PROC[x][$_Add[x][$_9]]][$_Do[v][$_3]]
 #$_Print[$_EVAL[l][e]][0]
+
+e = $_NULL
+sum = $_VAR[L{|g| $_STR[$_LIST[$_TAIL[$_S_]][$_HEAD]][g]}]
+v = $_VAR[L{|g| $_STR[$_LIST[$_TAIL[$_V_]][$_HEAD]][g]}]
+
+p = $_LET[sum][
+      $_PROC[v][
+        $_Add[v][$_3]
+      ]
+    ][$_Do[sum][$_2]]
+
+$_Print[$_EVAL[p][e]][0]
+
+p "--------"
