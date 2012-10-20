@@ -46,5 +46,9 @@ $_Print[ $_VAR_EQ[v1][v2] ][0]
 
 p "--------"
 v = $_VAR[$_STR[$_LIST[$_TAIL[$_X_]][$_HEAD]]]
-e = $_LIST[$_TAIL[v]][$_8][$_HEAD]
-$_Print[$_EVAL[v][e]][0]
+e = $_NULL
+
+l = $_LET[v][$_8][v]
+
+
+$_Print[$_EVAL[l][e]][0]

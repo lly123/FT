@@ -16,6 +16,11 @@ $_Print = L{|n|
   ]
 }
 
-$_PrintList = L{|l| $_Print[$_FST[l]][0]; $_IF[$_EQ[$_LEN[l]][$_1]][L{|x|}][L{|g| $_PrintList[$_SND[l]][g]}]}
+$_PrintList = L{|l|
+  $_Print[$_FST[l]][0];
+  $_IF[$_EQ[$_LEN[l]][$_1]][L{|x|}][
+      L{|g| $_PrintList[$_SND[l]][g]}
+  ]
+}
 
 

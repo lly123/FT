@@ -12,6 +12,7 @@ $_HEAD = $_NULL
 
 _LIST0 = L{|s| L{|l| L{|n| $_IF[$_IsNULL[n]][l][s[$_T[n][l]]]}}}
 $_LIST = $_Y[_LIST0]
+$_LIST_APP = $_LIST
 
 _LIST_AT0 = L{|s| L{|l| L{|n| L{|m| $_IF[$_EQ[n][m]][$_FST[l]][ L{|g| s[$_SND[l]][$_Sub1[n]][m][g]} ]}}}}
 _LIST_AT1 = $_Y[_LIST_AT0]
