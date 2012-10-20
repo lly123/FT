@@ -13,8 +13,9 @@ $_HEAD = $_NULL
 _LIST0 = L{|s| L{|l| L{|n| $_IF[$_IsNULL[n]][l][s[$_T[n][l]]]}}}
 $_LIST = $_Y[_LIST0]
 
-_LIST_AT0 = L{|s| L{|l| L{|n| $_IF[$_IsZero[n]][$_FST[l]][ L{|g| s[$_SND[l]][$_Sub1[n]][g]} ]}}}
-$_LIST_AT = $_Y[_LIST_AT0]
+_LIST_AT0 = L{|s| L{|l| L{|n| L{|m| $_IF[$_EQ[n][m]][$_FST[l]][ L{|g| s[$_SND[l]][$_Sub1[n]][m][g]} ]}}}}
+_LIST_AT1 = $_Y[_LIST_AT0]
+$_LIST_AT = L{|l| L{|n| _LIST_AT1[l][$_LEN[l]][$_Add1[n]] }}
 
 _LIST_SUB0 = L{|s| L{|l| L{|n| L{|m| L{|k|
   $_IF[$_IsNULL[l]][$_NULL][
@@ -49,8 +50,11 @@ _LIST_CMP0 = L{|s| L{|n| L{|m| L{|f|
 $_LIST_CMP = $_Y[_LIST_CMP0]
 
 # >> TYPE 5 : STRING
-$_STR = L{|n| $_0C[$_05][n]}
+$_STR = L{|n| $_IF[$_IsTUPLE[n]][$_0C[$_05][n]][$_NULL]}
+$_IsSTR = L{|n| $_0IF[$_0EQ[$_05][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
 
 $_STR_EQ = L{|n| L{|m|
-  $_LIST_CMP[_VAL[n]][_VAL[m]][L{|x| L{|y| $_CHAR_EQ[x][y] }}]
+  $_IF[$_AND[$_IsSTR[n]][$_IsSTR[m]]][
+    $_LIST_CMP[_VAL[n]][_VAL[m]][L{|x| L{|y| $_CHAR_EQ[x][y] }}]
+  ][$_NULL]
 }}
