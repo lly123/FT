@@ -13,26 +13,34 @@ $_VAR_EQ = L{|n| L{|m|
 
 # >> TYPE 7 : LET
 $_LET = L{|n| L{|v| L{|b| $_IF[$_IsVAR[n]][$_0C[$_07][$_0C[$_0C[n][v]][b]]][$_NULL]}}}
-$_IsLET = L{|n| $_0IF[$_0EQ[$_07][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
+_IsLET = L{|n| $_0IF[$_0EQ[$_07][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
 _LET_N = L{|n| $_0Car[$_0Car[$_0Cdr[n]]]}
 _LET_V = L{|n| $_0Cdr[$_0Car[$_0Cdr[n]]]}
 _LET_B = L{|n| $_0Cdr[$_0Cdr[n]]}
+
+# >> TYPE 8 : ADD
+$_Add1 = L{|n| $_0C[$_08][n]}
+_IsADD1 = L{|n| $_0IF[$_0EQ[$_08][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
+_ADD_N = L{|n| $_0Cdr[n]}
+
 
 _ENV_VAR_IDX = L{|v| L{|e| $_LIST_IDX[e][L{|n| $_IF[$_IsVAR[n]][$_VAR_EQ[n][v]][$_FALSE] }]}}
 _EVAL0 = L{|s| L{|v| L{|e|
   $_IF[$_OR[$_IsBOOL[v]][$_IsNUM[v]]][v][
     $_IF[$_IsVAR[v]][
-        L{|g|
-        $_IF[$_IsNULL[_ENV_VAR_IDX[v][e]]][$_NULL][
-            $_LIST_AT[e][$_Add1[_ENV_VAR_IDX[v][e]]]
-        ][g]
-        }
+      $_IF[$_IsNULL[_ENV_VAR_IDX[v][e]]][$_NULL][
+          $_LIST_AT[e][$_1Add1[_ENV_VAR_IDX[v][e]]]
+      ]
     ][
-        $_IF[$_IsLET[v]][
-            L{|e| L{|g| s[_LET_B[v]][e][g]}}[$_LIST_APP[e][_LET_N[v]][_LET_V[v]][$_HEAD]]
+      $_IF[_IsLET[v]][
+        L{|e| L{|g| s[_LET_B[v]][e][g]}}[$_LIST_APP[e][_LET_N[v]][_LET_V[v]][$_HEAD]]
+      ][
+        $_IF[_IsADD1[v]][
+          L{|g| $_1Add1[s[_ADD_N[v]][e]][g]}
         ][
-            $_NULL
+          $_NULL
         ]
+      ]
     ]
   ]
 }}}

@@ -14,7 +14,7 @@ $_IsNUM = L{|n| $_0IF[$_0EQ[$_02][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
 
 _BOTH_NUM = L{|n| L{|m| $_AND[$_IsNUM[n]][$_IsNUM[m]]}}
 
-$_Add1 = L{|n| $_IF[$_IsNUM[n]][$_NUM[$_0Add1[_VAL[n]]]][$_NULL] }
+$_1Add1 = L{|n| $_IF[$_IsNUM[n]][$_NUM[$_0Add1[_VAL[n]]]][$_NULL] }
 $_Add = L{|n| L{|m| $_IF[_BOTH_NUM[n][m]][$_NUM[$_0Add[_VAL[n]][_VAL[m]]]][$_NULL]}}
 $_Sub1 = L{|n| $_IF[$_IsNUM[n]][$_NUM[$_0Sub1[_VAL[n]]]][$_NULL] }
 $_Sub = L{|n| L{|m| $_IF[_BOTH_NUM[n][m]][$_NUM[$_0Sub[_VAL[n]][_VAL[m]]]][$_NULL]}}
@@ -48,14 +48,14 @@ $_SND = L{|n| $_0Cdr[$_0Cdr[n]]}
 
 $_0 = $_NUM[$_00]
 $_1 = $_NUM[$_01]
-$_2 = $_Add1[$_1]
-$_3 = $_Add1[$_2]
-$_4 = $_Add1[$_3]
-$_5 = $_Add1[$_4]
-$_6 = $_Add1[$_5]
-$_7 = $_Add1[$_6]
-$_8 = $_Add1[$_7]
-$_9 = $_Add1[$_8]
+$_2 = $_1Add1[$_1]
+$_3 = $_1Add1[$_2]
+$_4 = $_1Add1[$_3]
+$_5 = $_1Add1[$_4]
+$_6 = $_1Add1[$_5]
+$_7 = $_1Add1[$_6]
+$_8 = $_1Add1[$_7]
+$_9 = $_1Add1[$_8]
 
 # >> TYPE 4 : CHAR
 $_CHAR = L{|n| $_0C[$_04][n]}

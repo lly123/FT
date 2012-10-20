@@ -29,7 +29,7 @@ $_PrintList[list][0]
 
 p "--------"
 list = $_LIST[$_TAIL[$_1]][$_2][$_5][$_HEAD]
-list = $_LIST_MAP[list][ L{|v| $_Add1[v]} ]
+list = $_LIST_MAP[list][ L{|v| $_1Add1[v]} ]
 $_PrintList[list][0]
 
 p "--------"
@@ -48,7 +48,6 @@ p "--------"
 v = $_VAR[$_STR[$_LIST[$_TAIL[$_X_]][$_HEAD]]]
 e = $_NULL
 
-l = $_LET[v][$_8][v]
-
+l = $_LET[v][$_8][$_Add1[v]]
 
 $_Print[$_EVAL[l][e]][0]
