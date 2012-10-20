@@ -65,10 +65,10 @@ p = $_LET[sum][
         $_IF[$_EQ[v][$_2]][
           $_Add[v][$_3]
         ][
-          $_0
+          $_Do[sum][$_Add1[v]]
         ]
       ]
-    ][$_Do[sum][$_2]]
+    ][$_Do[sum][$_1]]
 
 $_Print[$_EVAL[p][e]][0]
 

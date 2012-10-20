@@ -78,7 +78,7 @@ _EVAL0 = L{|s| L{|v| L{|e|
       ][
         $_1IF[_IsDo[v]][
           L{|g| L{|p| L{|b|
-            L{|e| L{|g| s[b][e][g]}}[$_LIST_APP[e][_PROC_V[p]][_DO_V[v]][$_HEAD]]
+            L{|e| L{|g| s[b][e][g]}}[$_LIST_APP[e][_PROC_V[p]][ s[_DO_V[v]][e] ][$_HEAD]]
           }[_PROC_B[p]]
           }[_ENV_VAR_VAL[_DO_P[v]][e]][g]}
         ][
