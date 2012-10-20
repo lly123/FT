@@ -45,9 +45,17 @@ v2 = $_VAR[s2]
 $_Print[ $_VAR_EQ[v1][v2] ][0]
 
 p "--------"
-v = $_VAR[$_STR[$_LIST[$_TAIL[$_X_]][$_HEAD]]]
-e = $_NULL
+#v = $_VAR[$_STR[$_LIST[$_TAIL[$_V_]][$_HEAD]]]
+#x = $_VAR[$_STR[$_LIST[$_TAIL[$_X_]][$_HEAD]]]
+#e = $_NULL
+#
+#l = $_LET[v][$_9][$_Add[v][$_Add1[$_2]]]
+#
+#$_Print[$_EVAL[l][e]][0]
 
-l = $_LET[v][$_9][$_Add[v][$_Add1[$_2]]]
+#$_Print[$_EVAL[$_1][e]][0]
+#$_Print[$_EVAL[$_TRUE][e]][0]
+p "-------->>"
 
-$_Print[$_EVAL[l][e]][0]
+#l = $_LET[v][$_PROC[x][$_Add[x][$_9]]][$_Do[v][$_3]]
+#$_Print[$_EVAL[l][e]][0]
