@@ -13,7 +13,7 @@ $_Print0[ $_0IF[ $_0GT[$_02][$_02] ][ $_01 ][ $_00 ] ]
 
 p "--------"
 
-$_Print0[$_1IF[$_IsTUPLE[ $_T[$_1][$_NULL] ]][$_00][$_01]]
+$_Print0[$_1IF[$_1IsT[ $_1T[$_1][$_NULL] ]][$_00][$_01]]
 $_Print[ $_LEN[$_LIST[$_TAIL[$_1]][$_2][$_HEAD]] ]
 
 p "--------"
@@ -62,15 +62,16 @@ v = $_VAR[$_1]
 
 p = $_LET[sum][
       $_PROC[v][
-        $_IF[$_EQ[v][$_2]][
-          $_Add[v][$_3]
+        $_IF[$_EQ[$_FST[v]][$_0]][
+          $_SND[v]
         ][
-          $_Do[sum][$_Add1[v]]
+          $_Do[sum][$_T[$_Sub1[$_FST[v]]][$_Add[$_FST[v]][$_SND[v]]]]
         ]
       ]
-    ][$_Do[sum][$_1]]
+    ][$_Do[sum][$_T[$_2][$_3]]]
 
-$_Print[$_EVAL[p][e]][0]
+#$_Print[$_EVAL[p][e]][0]
+$_Print0[$_0Cdr[$_EVAL[p][e]]][0]
 
 p Time.now
 

@@ -16,7 +16,7 @@ _BOTH_NUM = L{|n| L{|m| $_AND[$_IsNUM[n]][$_IsNUM[m]]}}
 
 $_1Add1 = L{|n| $_1IF[$_IsNUM[n]][$_NUM[$_0Add1[_VAL[n]]]][$_NULL] }
 $_1Add = L{|n| L{|m| $_1IF[_BOTH_NUM[n][m]][$_NUM[$_0Add[_VAL[n]][_VAL[m]]]][$_NULL]}}
-$_Sub1 = L{|n| $_1IF[$_IsNUM[n]][$_NUM[$_0Sub1[_VAL[n]]]][$_NULL] }
+$_1Sub1 = L{|n| $_1IF[$_IsNUM[n]][$_NUM[$_0Sub1[_VAL[n]]]][$_NULL] }
 $_Sub = L{|n| L{|m| $_1IF[_BOTH_NUM[n][m]][$_NUM[$_0Sub[_VAL[n]][_VAL[m]]]][$_NULL]}}
 
 # >> Type 3 : Boolean
@@ -40,11 +40,11 @@ $_GT = L{|n| L{|m| $_1IF[_BOTH_NUM[n][m]][_BOOL[$_0GT[_VAL[n]][_VAL[m]]]][$_NULL
 $_IsZero = L{|n| $_1EQ[n][$_0]}
 
 # >> TYPE 1 : TUPLE
-$_T = L{|n| L{|m| $_0C[$_01][$_0C[n][m]]}}
-$_IsTUPLE = L{|n| $_0IF[$_0EQ[$_0Car[n]][$_01]][$_TRUE][$_FALSE]}
+$_1T = L{|n| L{|m| $_0C[$_01][$_0C[n][m]]}}
+$_1IsT = L{|n| $_0IF[$_0EQ[$_0Car[n]][$_01]][$_TRUE][$_FALSE]}
 
-$_FST = L{|n| $_0Car[$_0Cdr[n]]}
-$_SND = L{|n| $_0Cdr[$_0Cdr[n]]}
+$_1FST = L{|n| $_0Car[$_0Cdr[n]]}
+$_1SND = L{|n| $_0Cdr[$_0Cdr[n]]}
 
 $_0 = $_NUM[$_00]
 $_1 = $_NUM[$_01]

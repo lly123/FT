@@ -61,8 +61,26 @@ _IsEQ = L{|n| $_0IF[$_0EQ[$_013][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
 _EQ_N = L{|n| $_0Car[$_0Cdr[n]]}
 _EQ_M = L{|n| $_0Cdr[$_0Cdr[n]]}
 
-# >> EVAL
+# >> TYPE 14 : SUB1
+$_Sub1 = L{|n| $_0C[$_014][n]}
+_IsSUB1 = L{|n| $_0IF[$_0EQ[$_014][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
+_SUB1_N = L{|n| $_0Cdr[n]}
 
+# >> TYPE 15 : T
+$_T = L{|n| L{|m| $_0C[$_015][$_0C[n][m]]}}
+_IsT = L{|n| $_0IF[$_0EQ[$_015][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
+_T_FST = L{|n| $_0Car[$_0Cdr[n]]}
+_T_SND = L{|n| $_0Cdr[$_0Cdr[n]]}
+
+$_FST = L{|n| $_0C[$_016][n]}
+_IsFST = L{|n| $_0IF[$_0EQ[$_016][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
+_FST_V = L{|n| $_0Cdr[n]}
+
+$_SND = L{|n| $_0C[$_017][n]}
+_IsSND = L{|n| $_0IF[$_0EQ[$_017][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
+_SND_V = L{|n| $_0Cdr[n]}
+
+# >> EVAL
 _ENV_VAR_IDX = L{|v| L{|e| $_LIST_IDX[e][L{|n| $_1IF[$_IsVAR[n]][ L{|g| $_VAR_EQ[n][v][g]} ][$_FALSE]}]}}
 _ENV_VAR_VAL = L{|v| L{|e| $_LIST_AT[e][$_1Add1[_ENV_VAR_IDX[v][e]]]}}
 
@@ -88,12 +106,28 @@ _EVAL0 = L{|s| L{|v| L{|e|
             $_1IF[_IsEQ[v]][
               L{|g| $_1EQ[ L{|g| s[_EQ_N[v]][e][g]} ][ L{|g| s[_EQ_M[v]][e][g]} ][g]}
             ][
-              $_1IF[_IsADD1[v]][
-                L{|g| $_1Add1[s[_ADD1_N[v]][e]][g]}
+              $_1IF[_IsT[v]][
+                L{|g| $_1T[ L{|g| s[_T_FST[v]][e][g]} ][ L{|g| s[_T_SND[v]][e][g]} ][g]}
               ][
-                $_1IF[_IsADD[v]][
-                  L{|g| $_1Add[s[_ADD_N[v]][e]][s[_ADD_M[v]][e]][g]}
-                ][$_NULL]
+                $_1IF[_IsFST[v]][
+                  L{|g| $_1FST[s[_FST_V[v]][e]][g]}
+                ][
+                  $_1IF[_IsSND[v]][
+                    L{|g| $_1SND[s[_SND_V[v]][e]][g]}
+                  ][
+                    $_1IF[_IsSUB1[v]][
+                      L{|g| $_1Sub1[s[_SUB1_N[v]][e]][g]}
+                    ][
+                      $_1IF[_IsADD1[v]][
+                        L{|g| $_1Add1[s[_ADD1_N[v]][e]][g]}
+                      ][
+                        $_1IF[_IsADD[v]][
+                          L{|g| $_1Add[s[_ADD_N[v]][e]][s[_ADD_M[v]][e]][g]}
+                        ][$_NULL]
+                      ]
+                    ]
+                  ]
+                ]
               ]
             ]
           ]
