@@ -16,7 +16,7 @@ $_LIST_APP = $_LIST
 
 _LIST_AT0 = L{|s| L{|l| L{|n| L{|m| $_IF[$_EQ[n][m]][$_FST[l]][ L{|g| s[$_SND[l]][$_Sub1[n]][m][g]} ]}}}}
 _LIST_AT1 = $_Y[_LIST_AT0]
-$_LIST_AT = L{|l| L{|n| _LIST_AT1[l][$_LEN[l]][$_1Add1[n]] }}
+$_LIST_AT = L{|l| L{|n| $_IF[$_IsNUM[n]][ L{|g| _LIST_AT1[l][$_LEN[l]][$_1Add1[n]][g]} ][$_NULL]}}
 
 _LIST_SUB0 = L{|s| L{|l| L{|n| L{|m| L{|k|
   $_IF[$_IsNULL[l]][$_NULL][

@@ -44,11 +44,7 @@ _DO_V = L{|n| $_0Cdr[$_0Cdr[n]]}
 # >> EVAL
 
 _ENV_VAR_IDX = L{|v| L{|e| $_LIST_IDX[e][L{|n| $_IF[$_IsVAR[n]][ L{|g| $_VAR_EQ[n][v][g]} ][$_FALSE]}]}}
-_ENV_VAR_VAL = L{|v| L{|e|
-  $_IF[$_IsNULL[_ENV_VAR_IDX[v][e]]][$_NULL][
-    L{|g| $_LIST_AT[e][$_1Add1[_ENV_VAR_IDX[v][e]]][g]}
-  ]
-}}
+_ENV_VAR_VAL = L{|v| L{|e| $_LIST_AT[e][$_1Add1[_ENV_VAR_IDX[v][e]]]}}
 
 _EVAL0 = L{|s| L{|v| L{|e|
   $_IF[$_OR[$_IsBOOL[v]][$_IsNUM[v]]][v][
@@ -66,6 +62,12 @@ _EVAL0 = L{|s| L{|v| L{|e|
           ][
             $_LIST_APP[e][_PROC_V[_ENV_VAR_VAL[_DO_P[v]][e]]][_DO_V[v]][$_HEAD]
           ][g]}
+
+          #L{|g| L{|p| L{|b|
+          #  L{|e| L{|g| s[b][e][g]}}[$_LIST_APP[e][_PROC_V[p][_DO_V[v]]][$_HEAD]]
+          #}[_PROC_B[p]]
+          #}[_ENV_VAR_VAL[_DO_P[v]][e]][g]}
+
         ][
           $_IF[_IsADD1[v]][
             L{|g| $_1Add1[s[_ADD1_N[v]][e]][g]}
