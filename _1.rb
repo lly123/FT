@@ -15,7 +15,7 @@ $_IsNUM = L{|n| $_0IF[$_0EQ[$_02][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
 _BOTH_NUM = L{|n| L{|m| $_AND[$_IsNUM[n]][$_IsNUM[m]]}}
 
 $_1Add1 = L{|n| $_IF[$_IsNUM[n]][$_NUM[$_0Add1[_VAL[n]]]][$_NULL] }
-$_Add = L{|n| L{|m| $_IF[_BOTH_NUM[n][m]][$_NUM[$_0Add[_VAL[n]][_VAL[m]]]][$_NULL]}}
+$_1Add = L{|n| L{|m| $_IF[_BOTH_NUM[n][m]][$_NUM[$_0Add[_VAL[n]][_VAL[m]]]][$_NULL]}}
 $_Sub1 = L{|n| $_IF[$_IsNUM[n]][$_NUM[$_0Sub1[_VAL[n]]]][$_NULL] }
 $_Sub = L{|n| L{|m| $_IF[_BOTH_NUM[n][m]][$_NUM[$_0Sub[_VAL[n]][_VAL[m]]]][$_NULL]}}
 

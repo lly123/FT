@@ -48,6 +48,6 @@ p "--------"
 v = $_VAR[$_STR[$_LIST[$_TAIL[$_X_]][$_HEAD]]]
 e = $_NULL
 
-l = $_LET[v][$_8][$_Add1[v]]
+l = $_LET[v][$_9][$_Add[v][$_Add1[$_2]]]
 
 $_Print[$_EVAL[l][e]][0]
