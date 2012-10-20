@@ -14,10 +14,10 @@ $_IsNUM = L{|n| $_0IF[$_0EQ[$_02][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
 
 _BOTH_NUM = L{|n| L{|m| $_AND[$_IsNUM[n]][$_IsNUM[m]]}}
 
-$_1Add1 = L{|n| $_IF[$_IsNUM[n]][$_NUM[$_0Add1[_VAL[n]]]][$_NULL] }
-$_1Add = L{|n| L{|m| $_IF[_BOTH_NUM[n][m]][$_NUM[$_0Add[_VAL[n]][_VAL[m]]]][$_NULL]}}
-$_Sub1 = L{|n| $_IF[$_IsNUM[n]][$_NUM[$_0Sub1[_VAL[n]]]][$_NULL] }
-$_Sub = L{|n| L{|m| $_IF[_BOTH_NUM[n][m]][$_NUM[$_0Sub[_VAL[n]][_VAL[m]]]][$_NULL]}}
+$_1Add1 = L{|n| $_1IF[$_IsNUM[n]][$_NUM[$_0Add1[_VAL[n]]]][$_NULL] }
+$_1Add = L{|n| L{|m| $_1IF[_BOTH_NUM[n][m]][$_NUM[$_0Add[_VAL[n]][_VAL[m]]]][$_NULL]}}
+$_Sub1 = L{|n| $_1IF[$_IsNUM[n]][$_NUM[$_0Sub1[_VAL[n]]]][$_NULL] }
+$_Sub = L{|n| L{|m| $_1IF[_BOTH_NUM[n][m]][$_NUM[$_0Sub[_VAL[n]][_VAL[m]]]][$_NULL]}}
 
 # >> Type 3 : Boolean
 _BOOL = L{|n| $_0C[$_03][n]}
@@ -25,7 +25,7 @@ $_TRUE = _BOOL[$_0TRUE]
 $_FALSE = _BOOL[$_0FALSE]
 
 _IsBOOL = L{|n| $_0IF[$_0EQ[$_03][$_TYPE_OF[n]]][$_0TRUE][$_0FALSE]}
-$_IF = L{|b| L{|m| L{|n| $_0IF[_IsBOOL[b]][$_0IF[_VAL[b]][m][n]][$_NULL]}}}
+$_1IF = L{|b| L{|m| L{|n| $_0IF[_IsBOOL[b]][$_0IF[_VAL[b]][m][n]][$_NULL]}}}
 
 $_AND = L{|x| L{|y| $_0IF[$_0AND[_IsBOOL[x]][_IsBOOL[y]]][_BOOL[$_0AND[_VAL[x]][_VAL[y]]]][$_NULL]}}
 $_OR = L{|x| L{|y| $_0IF[$_0AND[_IsBOOL[x]][_IsBOOL[y]]][_BOOL[$_0OR[_VAL[x]][_VAL[y]]]][$_NULL]}}
@@ -33,11 +33,11 @@ $_NOT = L{|x| $_0IF[_IsBOOL[x]][_BOOL[$_0NOT[_VAL[x]]]][$_NULL]}
 
 $_IsBOOL = L{|x| $_0IF[_IsBOOL[x]][$_TRUE][$_FALSE]}
 
-$_EQ = L{|n| L{|m| $_IF[_BOTH_NUM[n][m]][_BOOL[$_0EQ[_VAL[n]][_VAL[m]]]][$_NULL]}}
-$_LT = L{|n| L{|m| $_IF[_BOTH_NUM[n][m]][_BOOL[$_0LT[_VAL[n]][_VAL[m]]]][$_NULL]}}
-$_GT = L{|n| L{|m| $_IF[_BOTH_NUM[n][m]][_BOOL[$_0GT[_VAL[n]][_VAL[m]]]][$_NULL]}}
+$_1EQ = L{|n| L{|m| $_1IF[_BOTH_NUM[n][m]][_BOOL[$_0EQ[_VAL[n]][_VAL[m]]]][$_NULL]}}
+$_LT = L{|n| L{|m| $_1IF[_BOTH_NUM[n][m]][_BOOL[$_0LT[_VAL[n]][_VAL[m]]]][$_NULL]}}
+$_GT = L{|n| L{|m| $_1IF[_BOTH_NUM[n][m]][_BOOL[$_0GT[_VAL[n]][_VAL[m]]]][$_NULL]}}
 
-$_IsZero = L{|n| $_EQ[n][$_0]}
+$_IsZero = L{|n| $_1EQ[n][$_0]}
 
 # >> TYPE 1 : TUPLE
 $_T = L{|n| L{|m| $_0C[$_01][$_0C[n][m]]}}
@@ -88,6 +88,6 @@ $_Y_ = $_CHAR[$_0Add[$_0Mul[$_02][$_010]][$_04]]
 $_Z_ = $_CHAR[$_0Add[$_0Mul[$_02][$_010]][$_05]]
 
 $_IsCHAR = L{|n| $_0IF[$_0EQ[$_04][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
-$_CHAR_EQ = L{|n| L{|m| $_IF[$_AND[$_IsCHAR[n]][$_IsCHAR[m]]][ _BOOL[$_0EQ[_VAL[n]][_VAL[m]]] ][$_NULL]}}
+$_CHAR_EQ = L{|n| L{|m| $_1IF[$_AND[$_IsCHAR[n]][$_IsCHAR[m]]][ _BOOL[$_0EQ[_VAL[n]][_VAL[m]]] ][$_NULL]}}
 
 
