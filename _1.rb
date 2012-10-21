@@ -35,6 +35,7 @@ $_1Add1 = L{|n| $_NUM[$_0Add1[$_1VAL[n]]] }
 $_1Add = L{|n| L{|m| $_NUM[$_0Add[$_1VAL[n]][$_1VAL[m]]]}}
 $_1Sub1 = L{|n| $_NUM[$_0Sub1[$_1VAL[n]]] }
 $_Sub = L{|n| L{|m| $_NUM[$_0Sub[$_1VAL[n]][$_1VAL[m]]]}}
+$_Mul = L{|n| L{|m| $_NUM[$_0Mul[$_1VAL[n]][$_1VAL[m]]]}}
 
 # >> TYPE 1 : TUPLE
 $_1T = L{|n| L{|m| $_0C[$_01][$_0C[n][m]]}}
@@ -53,6 +54,7 @@ $_6 = $_1Add1[$_5]
 $_7 = $_1Add1[$_6]
 $_8 = $_1Add1[$_7]
 $_9 = $_1Add1[$_8]
+$_10 = $_1Add1[$_9]
 
 # >> TYPE 4 : CHAR
 $_CHAR = L{|n| $_0C[$_04][n]}

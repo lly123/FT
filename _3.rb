@@ -66,6 +66,18 @@ _IsSND = L{|n| $_IS_TYPE[n][$_017]}
 _SND_V = L{|n| $_0Cdr[n]}
 
 # >> EVAL
+
+#_ENV_VAR_VAL0 = L{|s| L{|v| L{|e|
+#  $_1IF[$_IsNULL[e]][$_NULL][
+#    L{|n|
+#      $_1IF[$_AND[$_IsVAR[n]][ L{|g| $_VAR_EQ[n][v][g]} ]][
+#        $_1FST[e]
+#      ][ L{|g| s[v][$_1SND[$_1SND[e]]][g]} ]
+#    }[$_1FST[$_1SND[e]]]
+#  ]
+#}}}
+#_ENV_VAR_VAL = $_Y[_ENV_VAR_VAL0]
+
 _ENV_VAR_IDX = L{|v| L{|e| $_LIST_IDX[e][L{|n| $_1IF[$_IsVAR[n]][ L{|g| $_VAR_EQ[n][v][g]} ][$_FALSE]}]}}
 _ENV_VAR_VAL = L{|v| L{|e| $_LIST_AT[e][$_1Add1[_ENV_VAR_IDX[v][e]]]}}
 
@@ -76,7 +88,13 @@ _EVAL0 = L{|s| L{|v| L{|e|
     ][
       $_1IF[_IsLET[v]][
         L{|g| L{|e| L{|g| s[_LET_B[v]][e][g]}}[
-          $_LIST_APP[e][_LET_N[v]][_LET_V[v]][$_HEAD]
+          L{|n|
+            $_LIST_APP[e][_LET_N[v]][n][$_HEAD]
+          }[
+            $_1IF[$_IsVAR[_LET_V[v]]][
+              L{|g| _ENV_VAR_VAL[_LET_V[v]][e][g]}
+            ][_LET_V[v]]
+          ]
         ][g]}
       ][
         $_1IF[_IsDo[v]][

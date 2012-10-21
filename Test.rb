@@ -50,7 +50,7 @@ v = $_VAR[$_0]
 x = $_VAR[$_1]
 e = $_NULL
 
-l = $_LET[v][$_9][$_Add1[$_2]]
+l = $_LET[v][$_9][$_Add1[v]]
 
 $_Print[$_EVAL[l][e]][0]
 p "-------->>"
@@ -69,9 +69,13 @@ p = $_LET[sum][
           $_Do[sum][$_T[$_Sub1[$_FST[v]]][$_Add[$_FST[v]][$_SND[v]]]]
         ]
       ]
-    ][$_Do[sum][$_T[$_2][$_3]]]
+    ][
+      $_LET[v][sum][
+        $_Do[v][$_T[$_2][$_0]]
+      ]
+    ]
 
-$_Print0[$_0Cdr[$_EVAL[p][e]]][0]
+$_Print[$_EVAL[p][e]]
 
 p Time.now
 
