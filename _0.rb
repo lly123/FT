@@ -4,18 +4,11 @@ $_0C = L{|x| L{|y| L{|f| f[x][y]}}}
 $_0Car = L{|p| p[L{|x| L{|y| x}}]}
 $_0Cdr = L{|p| p[L{|x| L{|y| y}}]}
 
-# Logic With Pair
-=begin
-$_0IF = L{|b| L{|m| L{|n| b[$_0C[m][n]]}}}
-$_0TRUE = $_0Car
-$_0FALSE = $_0Cdr
-=end
-
 $_Y = L{|f| L{|g|
   u = L{|x| f[ L{|g| x[x][g]} ]}
   u[u][g]}}
 
-# --------- 1 ---------
+# ---------------------
 
 $_00 = L{|f| L{|x| x}}
 $_01 = L{|f| L{|x| f[x]}}
@@ -45,8 +38,6 @@ $_0Pow = L{|n| L{|m| m[n]}}
 
 # ---------------------
 
-# --------- 3 ---------
-
 #TRUE := λx.λy.x
 #FALSE := λx.λy.y
 #AND := λp.λq.p q p
@@ -67,6 +58,32 @@ _0IsZERO = L{|n| n[L{|x| $_0FALSE}][$_0TRUE]}
 
 # ---------------------
 
+#PRED := λn.λf.λx.n (λg.λh.h (g f)) (λu.x) (λu.u)
+#SUB := λn.λm.m PRED n
+_0Sub0 = L{|n| L{|f| L{|x| n[ L{|g| L{|h| h[g[f]]}} ][ L{|u| x} ][ L{|u| u} ] }}}
+$_0Sub = L{|n| L{|m| m[_0Sub0][n]}}
+$_0Sub1 = L{|n| $_0Sub[n][$_01]}
+
+#MULT := λn.λm.n (PLUS m) 0
+$_0Mul = L{|n| L{|m| n[$_0Add[m]][$_00]}}
+
+# ---------------------
+
+#LEQ := λn.λm.IS_ZERO (SUB n m)
+_0LEQ = L{|n| L{|m| _0IsZERO[$_0Sub[n][m]]}}
+
+$_0EQ = L{|n| L{|m| $_0IF[$_0AND[_0LEQ[n][m]][_0LEQ[m][n]]][$_0TRUE][$_0FALSE]}}
+$_0LT = L{|n| L{|m| $_0IF[$_0AND[_0LEQ[n][m]][$_0NOT[$_0EQ[n][m]]]][$_0TRUE][$_0FALSE]}}
+$_0GT = L{|n| L{|m| $_0IF[$_0AND[$_0NOT[_0LEQ[n][m]]][$_0NOT[$_0EQ[n][m]]]][$_0TRUE][$_0FALSE]}}
+# ---------------------
+
+# Logic With Pair
+=begin
+$_0IF = L{|b| L{|m| L{|n| b[$_0C[m][n]]}}}
+$_0TRUE = $_0Car
+$_0FALSE = $_0Cdr
+=end
+
 # Arithmetic with Pair
 =begin
 $_0Sub1 = L{|n| L{|f| L{|x|
@@ -80,19 +97,6 @@ $_0Sub = $_Y[_0Sub0]
 _Mul0 = L{|s| L{|n| L{|m| $_0IF[_0IsZERO[m]][$_00][ L{|g| $_0Add[n][s[n][$_0Sub1[m]]][g]} ]}}}
 $_0Mul = $_Y[_Mul0]
 =end
-
-#PRED := λn.λf.λx.n (λg.λh.h (g f)) (λu.x) (λu.u)
-#SUB := λn.λm.m PRED n
-_0Sub0 = L{|n| L{|f| L{|x| n[ L{|g| L{|h| h[g[f]]}} ][ L{|u| x} ][ L{|u| u} ] }}}
-$_0Sub = L{|n| L{|m| m[_0Sub0][n]}}
-$_0Sub1 = L{|n| $_0Sub[n][$_01]}
-
-#MULT := λn.λm.n (PLUS m) 0
-$_0Mul = L{|n| L{|m| n[$_0Add[m]][$_00]}}
-
-# ---------------------
-
-# --------- 6 ---------
 
 # Logic Expression With Low Performance
 =begin
@@ -121,16 +125,5 @@ $_0LT = L{|n| L{|m|
 
 $_0GT = L{|n| L{|m| $_0IF[$_0OR[$_0EQ[n][m]][$_0LT[n][m]]][$_0FALSE][$_0TRUE] }}
 =end
-
-
-#LEQ := λn.λm.IS_ZERO (SUB n m)
-_0LEQ = L{|n| L{|m| _0IsZERO[$_0Sub[n][m]]}}
-
-$_0EQ = L{|n| L{|m| $_0IF[$_0AND[_0LEQ[n][m]][_0LEQ[m][n]]][$_0TRUE][$_0FALSE]}}
-$_0LT = L{|n| L{|m| $_0IF[$_0AND[_0LEQ[n][m]][$_0NOT[$_0EQ[n][m]]]][$_0TRUE][$_0FALSE]}}
-$_0GT = L{|n| L{|m| $_0IF[$_0AND[$_0NOT[_0LEQ[n][m]]][$_0NOT[$_0EQ[n][m]]]][$_0TRUE][$_0FALSE]}}
-# ---------------------
-
-
 
 

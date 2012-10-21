@@ -1,83 +1,68 @@
 require "./_2"
 
-_VAL = L{|n| $_0Cdr[n]}
+# >> TYPE 6 : VAR(NUM)
+$_VAR = L{|n| $_0C[$_06][n]}
+$_IsVAR = L{|n| $_IS_TYPE[n][$_06]}
+$_VAR_EQ = L{|n| L{|m| $_1EQ[$_1VAL[n]][$_1VAL[m]]}}
 
-# >> TYPE 6 : VAR
-#$_VAR = L{|n| $_1IF[$_IsSTR[n]][ $_0C[$_06][n] ][$_NULL]}
-#$_IsVAR = L{|n| $_0IF[$_0EQ[$_06][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
-#$_VAR_EQ = L{|n| L{|m|
-#  $_1IF[$_AND[$_IsVAR[n]][$_IsVAR[m]]][
-#    L{|g| $_STR_EQ[_VAL[n]][_VAL[m]][g]}
-#  ][$_NULL]
-#}}
-
-$_VAR = L{|n| $_1IF[$_IsNUM[n]][ $_0C[$_06][n] ][$_NULL]}
-$_IsVAR = L{|n| $_0IF[$_0EQ[$_06][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
-$_VAR_EQ = L{|n| L{|m|
-  $_1IF[$_AND[$_IsVAR[n]][$_IsVAR[m]]][
-    L{|g| $_1EQ[_VAL[n]][_VAL[m]][g]}
-  ][$_NULL]
-}}
-
-# >> TYPE 7 : LET
-$_LET = L{|n| L{|v| L{|b| $_1IF[$_IsVAR[n]][ $_0C[$_07][$_0C[$_0C[n][v]][b]] ][$_NULL]}}}
-_IsLET = L{|n| $_0IF[$_0EQ[$_07][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
+# >> TYPE 7 : LET(VAR)(T)(T)
+$_LET = L{|n| L{|v| L{|b| $_0C[$_07][$_0C[$_0C[n][v]][b]]}}}
+_IsLET = L{|n| $_IS_TYPE[n][$_07]}
 _LET_N = L{|n| $_0Car[$_0Car[$_0Cdr[n]]]}
 _LET_V = L{|n| $_0Cdr[$_0Car[$_0Cdr[n]]]}
 _LET_B = L{|n| $_0Cdr[$_0Cdr[n]]}
 
-# >> TYPE 8 : ADD1
+# >> TYPE 8 : ADD1(NUM)
 $_Add1 = L{|n| $_0C[$_08][n]}
-_IsADD1 = L{|n| $_0IF[$_0EQ[$_08][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
+_IsADD1 = L{|n| $_IS_TYPE[n][$_08]}
 _ADD1_N = L{|n| $_0Cdr[n]}
 
-# >> TYPE 9 : ADD
+# >> TYPE 9 : ADD(NUM)(NUM)
 $_Add = L{|n| L{|m| $_0C[$_09][$_0C[n][m]]}}
-_IsADD = L{|n| $_0IF[$_0EQ[$_09][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
+_IsADD = L{|n| $_IS_TYPE[n][$_09]}
 _ADD_N = L{|n| $_0Car[$_0Cdr[n]]}
 _ADD_M = L{|n| $_0Cdr[$_0Cdr[n]]}
 
-# >> TYPE 10 : PROC
-$_PROC = L{|n| L{|m| $_1IF[$_IsVAR[n]][ $_0C[$_010][$_0C[n][m]] ][$_NULL]}}
-_IsPROC = L{|n| $_0IF[$_0EQ[$_010][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
+# >> TYPE 10 : PROC(VAR)(T)
+$_PROC = L{|n| L{|m| $_0C[$_010][$_0C[n][m]]}}
 _PROC_V = L{|n| $_0Car[$_0Cdr[n]]}
 _PROC_B = L{|n| $_0Cdr[$_0Cdr[n]]}
 
-# >> TYPE 11 : DO
-$_Do = L{|p| L{|n| $_1IF[$_IsVAR[p]][ $_0C[$_011][$_0C[p][n]] ][$_NULL]}}
-_IsDo = L{|n| $_0IF[$_0EQ[$_011][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
+# >> TYPE 11 : DO(VAR)(T)
+$_Do = L{|p| L{|n| $_0C[$_011][$_0C[p][n]]}}
+_IsDo = L{|n| $_IS_TYPE[n][$_011]}
 _DO_P = L{|n| $_0Car[$_0Cdr[n]]}
 _DO_V = L{|n| $_0Cdr[$_0Cdr[n]]}
 
-# >> TYPE 12 : IF
+# >> TYPE 12 : IF(BOOL)(T)(T)
 $_IF = L{|b| L{|n| L{|m| $_0C[$_012][$_0C[b][$_0C[n][m]]]}}}
-_IsIF = L{|n| $_0IF[$_0EQ[$_012][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
+_IsIF = L{|n| $_IS_TYPE[n][$_012]}
 _IF_B = L{|n| $_0Car[$_0Cdr[n]]}
 _IF_N = L{|n| $_0Car[$_0Cdr[$_0Cdr[n]]]}
 _IF_M = L{|n| $_0Cdr[$_0Cdr[$_0Cdr[n]]]}
 
 $_EQ = L{|n| L{|m| $_0C[$_013][$_0C[n][m]]}}
-_IsEQ = L{|n| $_0IF[$_0EQ[$_013][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
+_IsEQ = L{|n| $_IS_TYPE[n][$_013]}
 _EQ_N = L{|n| $_0Car[$_0Cdr[n]]}
 _EQ_M = L{|n| $_0Cdr[$_0Cdr[n]]}
 
-# >> TYPE 14 : SUB1
+# >> TYPE 14 : SUB1(NUM)
 $_Sub1 = L{|n| $_0C[$_014][n]}
-_IsSUB1 = L{|n| $_0IF[$_0EQ[$_014][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
+_IsSUB1 = L{|n| $_IS_TYPE[n][$_014]}
 _SUB1_N = L{|n| $_0Cdr[n]}
 
-# >> TYPE 15 : T
+# >> TYPE 15 : TUPLE(T)(T)
 $_T = L{|n| L{|m| $_0C[$_015][$_0C[n][m]]}}
-_IsT = L{|n| $_0IF[$_0EQ[$_015][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
+_IsT = L{|n| $_IS_TYPE[n][$_015]}
 _T_FST = L{|n| $_0Car[$_0Cdr[n]]}
 _T_SND = L{|n| $_0Cdr[$_0Cdr[n]]}
 
 $_FST = L{|n| $_0C[$_016][n]}
-_IsFST = L{|n| $_0IF[$_0EQ[$_016][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
+_IsFST = L{|n| $_IS_TYPE[n][$_016]}
 _FST_V = L{|n| $_0Cdr[n]}
 
 $_SND = L{|n| $_0C[$_017][n]}
-_IsSND = L{|n| $_0IF[$_0EQ[$_017][$_TYPE_OF[n]]][$_TRUE][$_FALSE]}
+_IsSND = L{|n| $_IS_TYPE[n][$_017]}
 _SND_V = L{|n| $_0Cdr[n]}
 
 # >> EVAL

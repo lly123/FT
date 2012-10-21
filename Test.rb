@@ -71,7 +71,6 @@ p = $_LET[sum][
       ]
     ][$_Do[sum][$_T[$_2][$_3]]]
 
-#$_Print[$_EVAL[p][e]][0]
 $_Print0[$_0Cdr[$_EVAL[p][e]]][0]
 
 p Time.now
